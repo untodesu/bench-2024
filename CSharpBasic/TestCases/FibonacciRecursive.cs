@@ -14,7 +14,8 @@
 
         protected override void PerformTask(Random random)
         {
-            Fib(random.NextInt64(0L, 20L));
+            // Fib(random.NextInt64(0L, 20L));
+            Fib(20L);
         }
     }
 }

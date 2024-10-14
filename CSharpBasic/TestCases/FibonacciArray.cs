@@ -7,7 +7,7 @@
 
         protected override void PerformTask(Random random)
         {
-            long count = random.NextInt64(0L, 20L);
+            long count = 20L; // random.NextInt64(0L, 20L);
             long[] fibs = new long[count];
 
             for(int i = 0; i < fibs.Length; ++i) {
