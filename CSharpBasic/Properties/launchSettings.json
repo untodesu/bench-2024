@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpMath": {
+      "commandName": "Project",
+      "workingDirectory": "$(SolutionDir)"
+    }
+  }
+}
