@@ -15,8 +15,8 @@
 
 #if defined(_WIN32)
 #define PLATFORM "Win32NT"
-#elif defined(__linux__)
-#define PLATFORM "Linux"
+#elif defined(__unix__)
+#define PLATFORM "Unix"
 #else
 #define PLATFORM "Unknown"
 #endif
@@ -26,9 +26,9 @@ int main(void) {
     benchmarks.push_back(std::make_shared<FibonacciArray>());
     benchmarks.push_back(std::make_shared<FibonacciRecursive>());
     benchmarks.push_back(std::make_shared<FourierTransform>());
-    benchmarks.push_back(std::make_shared<PowCosine>());
-    benchmarks.push_back(std::make_shared<QuakeInverseSqrt>());
     benchmarks.push_back(std::make_shared<SquareRoot>());
+    benchmarks.push_back(std::make_shared<QuakeInverseSqrt>());
+    benchmarks.push_back(std::make_shared<PowCosine>());
 
     const auto epoch = std::chrono::high_resolution_clock::now().time_since_epoch();
     const std::size_t epoch_seconds = std::chrono::duration_cast<std::chrono::seconds>(epoch).count();

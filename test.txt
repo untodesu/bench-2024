@@ -1,9 +1,0 @@
-C++
-FourierTransform    : 18461.182734375us
-SquareRoot          : 0.024472656us
-PowCosine           : 0.024941406us
-
-C#
-FourierTransform    : 20.149411172ms
-SquareRoot          : 0.000041113ms
-PowCosine           : 0.000072441ms

@@ -13,6 +13,9 @@ namespace CSharpBasic
 
         static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.InvariantCulture;
+
             long unixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             StreamWriter mainCSV = new StreamWriter(string.Format("csharp.{0}.{1}.main.{2}.csv",
                 Environment.OSVersion.Platform, Configuration, unixSeconds));

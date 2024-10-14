@@ -1,0 +1,7 @@
+Name,Iterations,Elapsed
+FibonacciArray,5120,0.000012109375
+FibonacciRecursive,5120,0.021580468750
+FourierTransform,5120,33.745541992187
+PowCosine,5120,0.010518945312
+QuakeInverseSqrt,5120,0.004992773437
+SquareRoot,5120,0.004967578125
