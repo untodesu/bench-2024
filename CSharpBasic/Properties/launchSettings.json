@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "CSharpMath": {
+    "CSharpBasic": {
       "commandName": "Project",
       "workingDirectory": "$(SolutionDir)"
     }

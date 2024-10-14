@@ -4,15 +4,26 @@ namespace CSharpBasic
 {
     internal sealed class Program
     {
+
+#if DEBUG
+        private const string Configuration = "Debug";
+#else
+        private const string Configuration = "Release";
+#endif
+
         static void Main(string[] args)
         {
-            DateTime dateTime = DateTime.UtcNow;
-            StreamWriter mainCSV = new StreamWriter(string.Format("csharp.{0}.main.{1}.csv", Environment.OSVersion.Platform, dateTime.ToFileTime()));
+            long unixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            StreamWriter mainCSV = new StreamWriter(string.Format("csharp.{0}.{1}.main.{2}.csv",
+                Environment.OSVersion.Platform, Configuration, unixSeconds));
             mainCSV.WriteLine("Name,Iterations,Elapsed");
 
             List<BaseBenchmark> benchmarks = new List<BaseBenchmark> {
+                new FibonacciArray(),
+                new FibonacciRecursive(),
                 new FourierTransform(),
                 new SquareRoot(),
+                new QuakeInverseSqrt(),
                 new PowCosine(),
             };
 
@@ -24,7 +35,8 @@ namespace CSharpBasic
                 Console.WriteLine("{0,-25}: {1:0.000000000}ms", name, elapsed);
                 mainCSV.WriteLine("{0},{1},{2:0.000000000000}", name, iterations, elapsed);
 
-                StreamWriter benchCSV = new StreamWriter(string.Format("csharp.{0}.bench.{1}.{2}.csv", Environment.OSVersion.Platform, name, dateTime.ToFileTime()));
+                StreamWriter benchCSV = new StreamWriter(string.Format("csharp.{0}.{1}.bench.{2}.{3}.csv",
+                    Environment.OSVersion.Platform, Configuration, name, unixSeconds));
                 benchCSV.WriteLine("Iteration,ET");
 
                 for(int i = 0; i < timings.Count; ++i) {
