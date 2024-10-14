@@ -23,8 +23,8 @@
                 m_FourierIm[i] = 0.0;
 
                 for(int j = 0; j < SamplesCount; ++j) {
-                    m_FourierRe[i] += Math.Cos(2.0 * Math.PI * i * (float)(j / SampleRate)) * m_Samples[j];
-                    m_FourierIm[i] += Math.Sin(2.0 * Math.PI * i * (float)(j / SampleRate)) * m_Samples[j];
+                    m_FourierRe[i] += Math.Cos(2.0 * Math.PI * i * j / SampleRate) * m_Samples[j];
+                    m_FourierIm[i] += Math.Sin(2.0 * Math.PI * i * j / SampleRate) * m_Samples[j];
                 }
 
                 m_FourierRe[i] /= 2.0 * SampleRate;
