@@ -16,9 +16,8 @@ namespace CSharpBasic
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.InvariantCulture;
 
-            long unixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            StreamWriter mainCSV = new StreamWriter(string.Format("csharp.{0}.{1}.main.{2}.csv",
-                Environment.OSVersion.Platform, Configuration, unixSeconds));
+            StreamWriter mainCSV = new StreamWriter(string.Format("csharp.{0}.{1}.main.csv",
+                Environment.OSVersion.Platform, Configuration));
             mainCSV.WriteLine("Name,Iterations,Elapsed");
 
             List<BaseBenchmark> benchmarks = new List<BaseBenchmark> {
@@ -38,8 +37,8 @@ namespace CSharpBasic
                 Console.WriteLine("{0,-25}: {1:0.000000000}ms", name, elapsed);
                 mainCSV.WriteLine("{0},{1},{2:0.000000000000}", name, iterations, elapsed);
 
-                StreamWriter benchCSV = new StreamWriter(string.Format("csharp.{0}.{1}.bench.{2}.{3}.csv",
-                    Environment.OSVersion.Platform, Configuration, name, unixSeconds));
+                StreamWriter benchCSV = new StreamWriter(string.Format("csharp.{0}.{1}.bench.{2}.csv",
+                    Environment.OSVersion.Platform, Configuration, name));
                 benchCSV.WriteLine("Iteration,ET");
 
                 for(int i = 0; i < timings.Count; ++i) {

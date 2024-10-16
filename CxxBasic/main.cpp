@@ -30,12 +30,9 @@ int main(void) {
     benchmarks.push_back(std::make_shared<QuakeInverseSqrt>());
     benchmarks.push_back(std::make_shared<PowCosine>());
 
-    const auto epoch = std::chrono::high_resolution_clock::now().time_since_epoch();
-    const std::size_t epoch_seconds = std::chrono::duration_cast<std::chrono::seconds>(epoch).count();
-
     char buffer[2048] = {};
 
-    std::snprintf(buffer, sizeof(buffer), "cxx.%s.%s.main.%zu.csv", PLATFORM, CONFIGURATION, epoch_seconds);
+    std::snprintf(buffer, sizeof(buffer), "cxx.%s.%s.main.csv", PLATFORM, CONFIGURATION);
     FILE *file = fopen(buffer, "w");
     assert(file != nullptr);
 
@@ -50,7 +47,7 @@ int main(void) {
         std::fprintf(stderr, "%-25s: %.09fms\n", name, elapsed);
         std::fprintf(file, "%s,%zu,%.012f\n", name, iterations, elapsed);
 
-        std::snprintf(buffer, sizeof(buffer), "cxx.%s.%s.bench.%s.%zu.csv", PLATFORM, CONFIGURATION, name, epoch_seconds);
+        std::snprintf(buffer, sizeof(buffer), "cxx.%s.%s.bench.%s.csv", PLATFORM, CONFIGURATION, name);
         FILE *csv = fopen(buffer, "w");
         assert(csv != nullptr);
 
